@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 
 /**
  * my_alias - handles the alias builtin, sets and prints

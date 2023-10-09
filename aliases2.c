@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 
 /**
  * check_alias - checks if a command is an alias
