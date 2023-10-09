@@ -1,5 +1,5 @@
-#ifndef SHELL_H_
-#define SHELL_H_
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <errno.h>
 #include <fcntl.h>
@@ -84,7 +84,6 @@ typedef struct built_in
 	int (*func)(sh_data *);
 } built_in;
 
-/* Major stakeholders */
 char **get_commands(sh_data *, char *, size_t);
 char *check_shell(sh_data *);
 char *_getenv(sh_data *, char *);
@@ -96,7 +95,6 @@ int rm_comments(char **);
 void expand_var(sh_data *);
 int cd_err(sh_data *, int);
 
-/* Aliases */
 alias_l *add_alias(alias_l **, char *, char *);
 int my_alias(sh_data *);
 int print_alias(sh_data *, char *);
@@ -105,7 +103,6 @@ int set_alias(sh_data *, char *);
 void check_alias(sh_data *);
 void free_aliases(alias_l *);
 
-/* Other builtins */
 int my_cd(sh_data *);
 void mod_dir(sh_data *, char *, char *);
 int my_env(sh_data *);
@@ -114,7 +111,6 @@ int my_exit(sh_data *);
 int my_set(sh_data *);
 int my_unset(sh_data *);
 
-/* Replacement functions */
 char *my_strcat(char *, char *);
 char *my_strcpy(char *, char *);
 char *my_strdup(char *);
@@ -131,7 +127,6 @@ ssize_t my_getline(char **, size_t *, FILE *);
 void insert_line(char **, size_t *n, char *, size_t);
 void reverse_str(char *);
 
-/* Custom functions */
 void free_arr2(char **);
 void free_list(path_l *);
 int get_len(int);
