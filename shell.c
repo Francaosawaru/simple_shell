@@ -92,7 +92,7 @@ void loop_shell(sh_data *shell)
 	char *path;
 
 	if (shell->av[1])
-		exit(98);
+		exit (98);
 	else if (!isatty(STDIN_FILENO))
 		non_interact(shell);
 	else
