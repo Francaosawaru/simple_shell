@@ -18,18 +18,18 @@ int (*get_functions(char **arr))(sh_data *)
 		{NULL, NULL}
 	};
 
-	int i = 0;
+	int j = 0;
 
 	if (arr != NULL)
 	{
-		while (sh[i].functions != NULL)
+		while (sh[j].functions != NULL)
 		{
-			if (my_strcmp(sh[i].str, arr[0]) == 0)
+			if (my_strcmp(sh[j].str, arr[0]) == 0)
 			{
-				return (sh[i].functions);
+				return (sh[j].functions);
 			}
 			else
-				i++;
+				j++;
 		}
 	}
 
