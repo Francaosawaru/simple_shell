@@ -1,4 +1,4 @@
-#include "Shell.h"
+#include "shell.h"
 
 /**
  * my_cd - changes the working directory of the shell
