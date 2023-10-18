@@ -76,19 +76,19 @@ typedef struct data
 /**
  * struct built_in - structure containg builtin functions and their functions
  * @str: the command name
- * @func: pointer to the function for the specific command
+ * @functions: pointer to the function for the specific command
  */
 typedef struct built_in
 {
 	char *str;
-	int (*func)(sh_data *);
+	int (*functions)(sh_data *);
 } built_in;
 
 char **get_commands(sh_data *, char *, size_t);
 char *check_shell(sh_data *);
 char *_getenv(sh_data *, char *);
 char *search_path(path_l *, char *);
-int (*get_func(char **))(sh_data *);
+int (*get_functions(char **))(sh_data *);
 void loop_shell(sh_data *);
 void non_interact(sh_data *);
 int rm_comments(char **);
