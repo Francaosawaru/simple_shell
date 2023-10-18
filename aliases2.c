@@ -56,5 +56,5 @@ void free_aliases(alias_l *head)
 		free(temp->value);
 		free(temp);
 	}
-	return (0);
+
 }
