@@ -22,18 +22,17 @@ char *_getenv(sh_data *shell, char *name)
 			k++;
 		}
 		if (check == 0 && shell->_environ[j][k] == '=')
+			;
 		{
-			for (l = k + 1, m = 0; shell->_environ[j][l]; l++, m++)
-				;
-
-			value = malloc(sizeof(char) * (m + 1));
-
-			for (l = k + 1, m = 0; shell->_environ[j][l]; m++, l++)
-				value[m] = shell->_environ[j][l];
+for (l = k + 1, m = 0; shell->_environ[j][l]; l++, m++)
+	;
+value = malloc(sizeof(char) * (m + 1));
+for (l = k + 1, m = 0; shell->_environ[j][l]; m++, l++)
+	value[m] = shell->_environ[j][l];
 			value[m] = '\0';
 			return (value);
 		}
 	}
 
-	return (NULL);
+	return (0);
 }
