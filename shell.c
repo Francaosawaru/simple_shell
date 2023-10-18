@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * get_func - returns functions for builtin commands
+ * get_functions - returns functions for builtin commands
  * @arr: the line splitted into command and args
  *
  * Return: the function that prints the builtin command
  */
-int (*get_func(char **arr))(sh_data *)
+int (*get_functions(char **arr))(sh_data *)
 {
 	built_in sh[] = {
 		{"exit", my_exit},
@@ -22,11 +22,11 @@ int (*get_func(char **arr))(sh_data *)
 
 	if (arr != NULL)
 	{
-		while (sh[i].func != NULL)
+		while (sh[i].functions != NULL)
 		{
 			if (my_strcmp(sh[i].str, arr[0]) == 0)
 			{
-				return (sh[i].func);
+				return (sh[i].functions);
 			}
 			else
 				i++;
@@ -92,7 +92,7 @@ void loop_shell(sh_data *shell)
 	char *path;
 
 	if (shell->av[1])
-		exit (98);
+		exit(98);
 	else if (!isatty(STDIN_FILENO))
 		non_interact(shell);
 	else
@@ -138,7 +138,7 @@ void loop_shell(sh_data *shell)
  */
 char *check_shell(sh_data *shell)
 {
-	int (*built_in_func)(sh_data *sh);
+	int (*built_in_functions)(sh_data *sh);
 	char *path;
 
 	shell->arr = get_commands(shell, shell->line, shell->length);
@@ -149,11 +149,11 @@ char *check_shell(sh_data *shell)
 	}
 	check_alias(shell);
 	expand_var(shell);
-	built_in_func = get_func(shell->arr);
+	built_in_functions = get_functions(shell->arr);
 
-	if (built_in_func != NULL)
+	if (built_in_functions != NULL)
 	{
-		shell->status = built_in_func(shell);
+		shell->status = built_in_functions(shell);
 		if (shell->arr != NULL)
 			free_arr2(shell->arr);
 		shell->builtin = 1;
