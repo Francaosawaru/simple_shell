@@ -186,7 +186,7 @@ char *check_shell(sh_data *shell)
 int main(int ac, char *av[], char *env[])
 {
 	sh_data shell;
-	int i;
+	int j;
 
 	shell.line = NULL;
 	shell.length = 0;
@@ -199,18 +199,18 @@ int main(int ac, char *av[], char *env[])
 	(void) env;
 
 	shell.av = malloc(sizeof(char *) * (ac + 1));
-	for (i = 0; av[i]; i++)
-		shell.av[i] = my_strdup(av[0]);
-	shell.av[i] = NULL;
+	for (j = 0; av[j]; j++)
+		shell.av[j] = my_strdup(av[0]);
+	shell.av[j] = NULL;
 
 	/* count th enumber of env strings to malloc a copy */
-	for (i = 0; environ[i]; i++)
+	for (j = 0; environ[j]; j++)
 		;
 
-	shell._environ = malloc(sizeof(char *) * (i + 1));
-	for (i = 0; environ[i]; i++)
-		shell._environ[i] = my_strdup(environ[i]);
-	shell._environ[i] = NULL;
+	shell._environ = malloc(sizeof(char *) * (j + 1));
+	for (j = 0; environ[j]; j++)
+		shell._environ[j] = my_strdup(environ[j]);
+	shell._environ[j] = NULL;
 
 	shell.path = path_to_list(&shell);
 
